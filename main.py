@@ -1,5 +1,4 @@
 import numpy as np
-import Q_Learning
 import ludopy
 
 def run_ludo():
@@ -8,10 +7,10 @@ def run_ludo():
     discount_factor_vec = [0.4] #[0.1, 0.2, 0.3, 0.4, 0.5]
     explore_rate_vec = [0.05] #[0.05, 0.10, 0.15, 0.2]
 
-    after = 800
+    after = 8 #800
 
     number_of_runs_without_learning = 25
-    number_of_runs_with_learning = 1000
+    number_of_runs_with_learning = 10 #1000
 
     q_player = 0
 
@@ -21,7 +20,7 @@ def run_ludo():
     for ER_index, ER_value in enumerate(explore_rate_vec):
         for DF_index, DF_value in enumerate(discount_factor_vec):
             for LR_index, LR_value in enumerate(learning_rate_vec):
-                q = Q_Learning.QLearning(q_player)
+                q = ludopy.QLearning(q_player)
                 q.training = 1
 
                 q.learning_rate = LR_value
@@ -78,22 +77,19 @@ def run_ludo():
                         win_rate_vec[ER_index][DF_index][LR_index][k] = (wins[q_player] / number_of_runs_without_learning)
                         print('Win rate: ', wins[q_player] / number_of_runs_without_learning)
 
-                q.save_Q_table("Best_learning_parameters" + str(k) + ".npy")
+                q.save_Q_table("ludopy/Data/Best_learning_parameters" + str(k) + ".npy")
 
-    test_name = "Test_run"
+    test_name = "ludopy/Data/Test_run"
     file_name = test_name + "_data.npy"
     file_ext = file_name.split(".")[-1]
-    assert file_ext == "npy", "The file extension has to be npy (numpy file)"
     np.save(file_name, win_rate_vec)
 
     file_name = test_name + "_parameters.npy"
     file_ext = file_name.split(".")[-1]
-    assert file_ext == "npy", "The file extension has to be npy (numpy file)"
-    np.save(file_name, [explore_rate_vec, discount_factor_vec, learning_rate_vec, number_of_runs_with_learning, number_of_runs_without_learning])
+    np.save(file_name, np.array([explore_rate_vec, discount_factor_vec, learning_rate_vec, number_of_runs_with_learning, number_of_runs_without_learning], dtype=object))
 
 
     return True
-
 
 if __name__ == '__main__':
     run_ludo()
