@@ -4,19 +4,21 @@ This project implements a Ludo game environment in Python and develops an Artifi
 
 ## Abstract
 
-An artificial intelligent (AI) method to play the game ludo is developed. The method used is called Q-learning and it uses a special representation of the game so that the method is compatible. The representation is composed of states that the player piece can be in and actions which can be performed by the player pieces. For the method to understand and be able to win the game training is need to help the Q-learning player learn the game. A reward function is also used when training to determine if the Q-learning player is making a good or bad decision. 
+An artificial intelligent (AI) method to play the game ludo is developed. The method used is called Q-learning and it uses a special representation of the game so that the method is compatible with it. The representation is composed of states that the pieces can be in and actions which can be performed by the pieces. 
+For the method to understand and be able to win the game training is needed. A reward function is used when training to determine if the Q-learning player is making a good or bad decision. Training is done against 3 random acting players and it achieves an average win rate of 59.5% after tuning the hyperparameters of the Q-learning algorithm. 
 
-The training is done against 3 random acting players and it achieves an average win rate of 59.5%. The algorithm is evaluated in two different test, against an alternative AI method and against the alternative method and 2 random acting players. In the first test the presented method achieves a win rate of 56.43% compared to 43.56% of the alternative method. In the second test it achieves a win rate of 46.89% compared to 37.5 % with the alternative method and the random acting players with a win rate or around 7.8%.
+The algorithm is evaluated in two different test. The first test is against an alternative AI method and the second test is against the alternative AI method and 2 random acting players. In the first test the presented method achieves a win rate of 56.43% compared to 43.56% of the alternative method. In the second test it achieves a win rate of 46.89% compared to 37.5 % for the alternative method and the random acting players with a win rate or around 7.8%.
 
 ## Project Structure
 
 - `ludopy/`: Core package containing the game logic and AI implementation.
   - `game.py`: Main game engine.
   - `Q_Learning.py`: Q-learning agent implementation.
-  - `main_ludo.py`: Script to train and evaluate the AI.
   - `player.py`: Player logic and utilities.
   - `visualizer.py`: Tools for rendering the game board and creating videos.
   - `resources/`: Assets used by the visualizer (icons, etc.).
+- `main.py`: Script to train and evaluate the AI.
+- `test.py`: Basic game example and video generation.
 - `Data/`: Generated training data and Q-tables.
 
 ## Installation
@@ -30,7 +32,7 @@ pip install -r requirements.txt
 ### Training the AI
 To start the training process, run:
 ```bash
-python3 ludopy/main_ludo.py
+python3 main.py
 ```
 
 ### Basic Game Example
