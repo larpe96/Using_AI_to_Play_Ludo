@@ -17,9 +17,9 @@ The algorithm is evaluated in two different test. The first test is against an a
   - `player.py`: Player logic and utilities.
   - `visualizer.py`: Tools for rendering the game board and creating videos.
   - `resources/`: Assets used by the visualizer (icons, etc.).
-- `main.py`: Script to train and evaluate the AI.
+- `main.py`: Refactored script to train and evaluate the AI with CLI support.
 - `test.py`: Basic game example and video generation.
-- `Data/`: Generated training data and Q-tables.
+- `ludopy/Data/`: Generated training data, Q-tables, and win rate plots.
 
 ## Installation
 
@@ -30,10 +30,23 @@ pip install -r requirements.txt
 ## Usage
 
 ### Training the AI
-To start the training process, run:
+The `main.py` script now supports various command-line arguments for flexible training:
+
 ```bash
-python3 main.py
+python3 main.py --games 1000 --eval-games 25 --plot
 ```
+
+**Available Arguments:**
+- `--lr`: Learning rate (default: 0.1)
+- `--df`: Discount factor (default: 0.4)
+- `--er`: Exploration rate (default: 0.05)
+- `--games`: Total number of training games (default: 1000)
+- `--eval-games`: Number of games per evaluation phase (default: 25)
+- `--eval-after`: Start evaluation after N games (default: 800)
+- `--plot`: If set, generates a win rate plot after training.
+- `--verbose`: Enable detailed logging.
+
+Training results, including timestamped Q-tables and win rate data, are automatically saved in `ludopy/Data/`.
 
 ### Basic Game Example
 ```python
