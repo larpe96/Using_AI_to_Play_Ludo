@@ -1,7 +1,6 @@
 import numpy as np
 import Q_Learning
 import ludopy
-import unittest
 
 def run_ludo():
     #  Explore rate: 0.05, discount rate: 0.4 and learning rate: 0.1
@@ -30,7 +29,7 @@ def run_ludo():
                 q.explore_rate = ER_value
 
                 for k in range(number_of_runs_with_learning):
-                    print('Test2:   Number of learning games: ', k, ' ER: ', q.explore_rate, ' DF: ', q.discount_factor, ' LR: ', q.learning_rate)
+                    print('Test:   Number of learning games: ', k, ' ER: ', q.explore_rate, ' DF: ', q.discount_factor, ' LR: ', q.learning_rate)
                     g = ludopy.Game()
                     stop_while = False
                     q.training = 1
@@ -96,10 +95,5 @@ def run_ludo():
     return True
 
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, run_ludo())
-
-
 if __name__ == '__main__':
-    unittest.main()
+    run_ludo()

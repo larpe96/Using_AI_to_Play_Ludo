@@ -1,15 +1,11 @@
 import player
 import numpy as np
-import sys
 import random
 import matplotlib.pyplot as plt
-sys.path.append("../")
 
 number_of_pieces = 4
-# states = ["home", "goal_zone", "goal", "danger", "glob","safe"]
 total_number_of_states = 60
 
-# actions = ["move_out", "normal", "goal_zone", "goal", "star", "globe", "protect", "kill", "die",  "nothing"]
 total_number_of_actions = 11
 move_out_action = 0
 normal_action = 1
@@ -44,22 +40,11 @@ def plot_heat_map(q):
     plt.setp(ax.get_xticklabels(), rotation=45, ha="right",
              rotation_mode="anchor")
 
-    # Loop over data dimensions and create text annotations.
-    # for i in range(total_number_of_states):
-        # for j in range(total_number_of_actions):
-            # ax.text(j, i, int(q.Q_table[i, j]*100), ha="center", va="center", color="w")
-
     ax.set_title("Q_table")
     fig.tight_layout()
     plt.show()
 
 
-def count(test_list, value):
-    number_of_occurrences = 0
-    for element in test_list:
-        if element == value:
-            number_of_occurrences = number_of_occurrences + 1
-    return number_of_occurrences
 
 
 class QLearning:
@@ -142,7 +127,7 @@ class QLearning:
             elif old_piece_pos < 53 and new_piece_pos > 52: # goal zone
                 possible_actions[piece_index] = enter_goal_zone_action
 
-            elif old_piece_pos in player.GLOB_INDEXS or count(player_pieces, old_piece_pos) > 1:
+            elif old_piece_pos in player.GLOB_INDEXS or (player_pieces == old_piece_pos).sum() > 1:
                 possible_actions[piece_index] = move_away_from_safe_action
 
             elif new_piece_pos > 52 and not (new_piece_pos == player.GOAL_INDEX):

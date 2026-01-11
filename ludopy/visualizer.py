@@ -201,13 +201,14 @@ PLAYER_COLORS = {
     3: PLAYER_4_COLOR
 }
 folder, _ = os.path.split(__file__)
+resources_folder = os.path.join(folder, "resources")
 
-big_glob = cv2.imread(os.path.join(folder, "glob.png"))
+big_glob = cv2.imread(os.path.join(resources_folder, "glob.png"))
 big_glob = cv2.cvtColor(big_glob, cv2.COLOR_BGR2RGB)
 small_glob = cv2.resize(big_glob, (40, 40))
 glob_mask = cv2.inRange(small_glob, (255, 255, 255), (255, 255, 255)) == 0
 
-big_star = cv2.imread(os.path.join(folder, "star.png"))
+big_star = cv2.imread(os.path.join(resources_folder, "star.png"))
 big_star = cv2.cvtColor(big_star, cv2.COLOR_BGR2RGB)
 small_star = cv2.resize(big_star, (40, 40))
 star_mask = cv2.inRange(small_star, (255, 255, 255), (255, 255, 255)) == 0

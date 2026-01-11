@@ -1,2 +1,5 @@
-numpy
+numpy~=1.19.5
 opencv-python>=3.1
+
+matplotlib~=3.3.4
+setuptools~=56.0.0

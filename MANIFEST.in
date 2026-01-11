@@ -1,2 +1,2 @@
-include ludopy/star.png
-include ludopy/glob.png
+include ludopy/resources/star.png
+include ludopy/resources/glob.png
