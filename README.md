@@ -17,7 +17,7 @@ The algorithm is evaluated in two different test. The first test is against an a
   - `player.py`: Player logic and utilities.
   - `visualizer.py`: Tools for rendering the game board and creating videos.
   - `resources/`: Assets used by the visualizer (icons, etc.).
-- `main.py`: Refactored script to train and evaluate the AI with CLI support.
+- `main.py`: Script to train and evaluate the AI with CLI support.
 - `test.py`: Basic game example and video generation.
 - `ludopy/Data/`: Generated training data, Q-tables, and win rate plots.
 
@@ -30,7 +30,7 @@ pip install -r requirements.txt
 ## Usage
 
 ### Training the AI
-The `main.py` script now supports various command-line arguments for flexible training:
+The `main.py` script supports various command-line arguments for flexible training:
 
 ```bash
 python3 main.py --games 1000 --eval-games 25 --plot
